@@ -91,8 +91,6 @@ def extract_all_pages():
 # Loop through all options in the data_type dropdown menu
 all_dataframes = []
 for option in range(len(data_type_dropdown.options)):
-    if option != 4:
-        continue
     name = select_option_and_apply(driver, option)
 
     # Extract data from all pages for the selected option
@@ -100,14 +98,6 @@ for option in range(len(data_type_dropdown.options)):
     if combined_df is not None:
         combined_df.to_csv(f"unprocessed_data/treasury_rates_{name}.csv", index=False)
         all_dataframes.append(combined_df)
-
-# Combine all extracted dataframes if any were found
-if all_dataframes:
-    final_df = pd.concat(all_dataframes, ignore_index=True)
-    print(final_df.head())
-    final_df.to_csv("treasury_rates_combined_selenium.csv", index=False)
-else:
-    print("No data found.")
 
 # Close the browser
 driver.quit()
