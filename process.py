@@ -34,7 +34,6 @@ def csv_to_parquet():
     for csv_file in csv_files:
         csv_file_path = os.path.join(input_directory, csv_file)
         # Base name for the output Parquet files
-        # parquet_file_base = os.path.join(output_directory, csv_file.replace('.csv', ''))
 
         # Read the CSV file using Dask
         # Adjust blocksize parameter based on your system's memory capacity
@@ -56,7 +55,6 @@ def csv_to_parquet():
 if __name__ == "__main__":
     # Define the folder containing the unprocessed data
     input_folder = "unprocessed_data"
-    
     # Run the cleaning function
-    # clean_csv_files(input_folder)
+    clean_csv_files(input_folder)
     csv_to_parquet()
